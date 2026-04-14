@@ -1,0 +1,21 @@
+{
+  "name": "RocaPuntos — Rocadragón",
+  "short_name": "RocaPuntos",
+  "description": "Consulta tu saldo de puntos Rocadragón",
+  "start_url": "/rocapuntos",
+  "scope": "/rocapuntos",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0d1b2a",
+  "theme_color": "#0d1b2a",
+  "icons": [
+    {
+      "src": "/icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["shopping", "utilities"],
+  "lang": "es-CL"
+}

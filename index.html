@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <!-- PWA / App meta -->
+    <meta name="theme-color" content="#0d1b2a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="RocaPuntos" />
+    <meta name="application-name" content="RocaPuntos" />
+    <meta name="msapplication-TileColor" content="#0d1b2a" />
+
+    <!-- Open Graph (para compartir en WhatsApp etc.) -->
+    <meta property="og:title" content="RocaPuntos — Consulta tus puntos" />
+    <meta property="og:description" content="Verifica tu saldo de puntos de fidelización Rocadragón" />
+    <meta property="og:type" content="website" />
+
+    <!-- Manifest PWA -->
+    <link rel="manifest" href="/rocadragon.github.io/manifest.webmanifest" />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="/rocadragon.github.io/icons/icon.svg" />
+    <link rel="apple-touch-icon" href="/rocadragon.github.io/icons/icon.svg" />
+
+    <title id="page-title">Rocadragón</title>
+    <script type="module" crossorigin src="/rocadragon.github.io/assets/index-CJnQNc_-.js"></script>
+    <link rel="stylesheet" crossorigin href="/rocadragon.github.io/assets/index-DQWFR7c-.css">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      // Ajusta título y registra SW solo en /rocapuntos
+      if (window.location.pathname.startsWith('/rocapuntos')) {
+        document.getElementById('page-title').textContent = 'RocaPuntos — Mis Puntos'
+        if ('serviceWorker' in navigator) {
+          window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js').catch(() => {})
+          })
+        }
+      }
+    </script>
+  </body>
+</html>
