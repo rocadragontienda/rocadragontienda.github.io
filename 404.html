@@ -5,9 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rocadragón</title>
   <script>
-    const path = location.pathname.replace(/\/$/, '') || '/'
-    sessionStorage.setItem('redirect_path', path)
-    location.replace('/index.html')
+    // GitHub Pages SPA redirect: capta ruta 404 y redirige a index.html preservando la ruta
+    const pathWithQuery = location.pathname + location.search + location.hash
+    if (!pathWithQuery.includes('?redirect=')) {
+      const newUrl = '/?redirect=' + encodeURIComponent(pathWithQuery)
+      location.replace(newUrl)
+    }
   </script>
 </head>
 <body>
