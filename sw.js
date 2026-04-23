@@ -1,5 +1,5 @@
 // RocaPuntos — Service Worker
-const CACHE = 'rocapuntos-v1'
+const CACHE = 'rocapuntos-v2'
 const SHELL = [
   '/rocapuntos',
   '/manifest.webmanifest',
@@ -20,6 +20,9 @@ self.addEventListener('activate', (e) => {
 })
 
 self.addEventListener('fetch', (e) => {
+  // Never intercept non-GET/HEAD (POST beacons, form submits, etc.)
+  if (e.request.method !== 'GET' && e.request.method !== 'HEAD') return
+
   const url = new URL(e.request.url)
 
   // API calls: network-first, no caché
@@ -49,7 +52,7 @@ self.addEventListener('fetch', (e) => {
     return
   }
 
-  // SPA shell: network-first con fallback a caché
+  // SPA shell: network-first con fallback a caché (solo GET)
   e.respondWith(
     fetch(e.request)
       .then(res => {
